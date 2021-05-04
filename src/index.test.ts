@@ -123,6 +123,10 @@ test('', () => {
 });
 
 test('', () => {
+    expect(compareGrande8Reyes(['K', '3', '2', 'A'], ['K', 'K', '7', 'A'], false)).toBe(-1);
+});
+
+test('', () => {
     expect(compareGrande8Reyes(['K', '3', '2', 'A'], ['K', 'K', 'A', 'A'], true)).toBe(1);
 });
 
