@@ -215,7 +215,17 @@ export const comparePares8Reyes = (hand1: Array<string>, hand2: Array<string>, m
     return comparePares(hand1, hand2, mano);
 };
 
-const comparePares = (hand1: Array<string>, hand2: Array<string>, mano: boolean = false): number => {
+const comparePares = (hand1: Array<string>, hand2: Array<string>, mano: boolean = false): number  => {
+    const p1 = thereIsPares4Reyes(hand1);
+    const p2 = thereIsPares4Reyes(hand2);
+    if (!p1 && !p2 ) {
+        return -2;
+    } else if (!p1) {
+        return -1;
+    } else if (!p2) {
+        return 1;
+    }
+    
     const order: Array<string> = ['K', 'C', 'S', '7', '6', '5', '4', '3', '2', 'A'];
     const ob1: object = _groupHand(hand1);
     const ob2: object = _groupHand(hand2);
@@ -289,6 +299,15 @@ export const compareJuego8Reyes = (hand1: Array<string>, hand2: Array<string>, m
 };
 
 const compareJuego = (hand1: Array<string>, hand2: Array<string>, mano: boolean = false): number => {
+    const p1 = thereIsJuego4Reyes(hand1);
+    const p2 = thereIsJuego4Reyes(hand2);
+    
+    if (!p1) {
+        return -1;
+    } else if (!p2) {
+        return 1;
+    }    
+    
     const order: Array<number> = [31, 32, 40, 39, 38, 37, 36, 35, 34, 33];
     let result: number = 0;
     const o1: number = _countHand4Reyes(hand1);
@@ -305,9 +324,7 @@ const compareJuego = (hand1: Array<string>, hand2: Array<string>, mano: boolean 
             if (o1 === num) {
                 result = 1;
                 exit = true;
-            }
-
-            if (o2 === num) {
+            } else if (o2 === num) {
                 result = -1;
                 exit = true;
             }

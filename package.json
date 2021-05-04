@@ -21,6 +21,7 @@
   "scripts": {
     "clean": "del ./build/*",
     "build": "npm run clean && tsc",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --collect-coverage"
   }
 }

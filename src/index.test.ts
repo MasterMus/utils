@@ -2,7 +2,15 @@ import {
     cardToNumericalValue4Reyes,
     cardToNumericalValue8Reyes,
     compareGrande4Reyes,
-    compareGrande8Reyes
+    compareGrande8Reyes,
+    compareChica4Reyes,
+    compareChica8Reyes,
+    comparePares4Reyes,
+    comparePares8Reyes,
+    compareJuego4Reyes,
+    compareJuego8Reyes,
+    thereIsPares8Reyes,
+    thereIsJuego8Reyes
 } from "./index";
 
 // cardToNumericalValue4Reyes
@@ -132,4 +140,148 @@ test('', () => {
 
 test('', () => {
     expect(compareGrande8Reyes(['K', '3', '2', 'A'], ['K', 'K', 'A', 'A'], false)).toBe(-1);
+});
+
+// compareChica4Reyes
+
+test('', () => {
+    expect(compareChica4Reyes(['K', '3', '2', 'A'], ['K', '3', 'A', 'A'], false)).toBe(-1);
+});
+
+test('', () => {
+    expect(compareChica4Reyes(['K', '3', '2', 'A'], ['K', 'C', '2', 'A'], false)).toBe(1);
+});
+
+test('', () => {
+    expect(compareChica4Reyes(['K', '3', '2', '5'], ['K', 'C', 'A', 'A'], false)).toBe(-1);
+});
+
+// compareChica8Reyes
+
+test('', () => {
+    expect(compareChica8Reyes(['K', '3', '2', 'A'], ['K', '3', 'A', 'A'], true)).toBe(1);
+});
+
+test('', () => {
+    expect(compareChica8Reyes(['K', '3', '2', 'A'], ['K', '3', 'A', 'A'], false)).toBe(-1);
+});
+
+// comparePares4Reyes
+
+test('', () => {
+    expect(comparePares4Reyes(['K', '3', '2', 'A'], ['K', '3', '5', 'A'], false)).toBe(-2);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', '3', 'A', 'A'], ['K', '3', '5', 'A'], false)).toBe(1);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', '3', '2', 'A'], ['K', '3', 'K', 'A'], false)).toBe(-1);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', 'K', '5', 'A'], ['C', 'C', 'K', 'A'], false)).toBe(1);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', 'K', '5', '5'], ['C', 'C', 'K', 'K'], false)).toBe(-1);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', 'K', 'C', 'C'], ['C', 'C', 'K', 'K'], false)).toBe(-1);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', 'K', 'C', 'C'], ['C', 'C', 'K', 'K'], true)).toBe(1);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', 'K', 'K', 'C'], ['C', 'C', '5', '6'], true)).toBe(1);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', 'K', 'K', 'C'], ['C', 'C', '5', '5'], true)).toBe(-1);
+});
+
+test('', () => {
+    expect(comparePares4Reyes(['K', 'K', 'C', 'C'], ['K', 'K', '5', '5'], true)).toBe(1);
+});
+
+// comparePares8Reyes
+
+test('', () => {
+    expect(comparePares8Reyes(['K', '3', '5', 'C'], ['K', '5', '2', 'A'], true)).toBe(1);
+});
+
+// compareJuego4Reyes
+
+test('', () => {
+    expect(compareJuego4Reyes(['K', 'K', '5', '5'], ['7', '7', '7', 'S'], true)).toBe(-1);
+});
+
+test('', () => {
+    expect(compareJuego4Reyes(['7', '7', '7', 'S'], ['K', 'K', '5', '5'], true)).toBe(1);
+});
+
+test('', () => {
+    expect(compareJuego4Reyes(['7', '7', '7', 'S'], ['K', 'K', '5', '6'], true)).toBe(1);
+});
+
+test('', () => {
+    expect(compareJuego4Reyes(['7', '7', '7', 'S'], ['K', 'K', '5', '6'], false)).toBe(-1);
+});
+
+test('', () => {
+    expect(compareJuego4Reyes(['7', '7', '7', 'S'], ['K', 'K', '6', '6'], false)).toBe(1);
+});
+
+test('', () => {
+    expect(compareJuego4Reyes(['7', '7', '7', 'S'], ['K', 'K', 'K', 'C'], false)).toBe(1);
+});
+
+test('', () => {
+    expect(compareJuego4Reyes(['K', 'K', 'K', 'C'], ['7', '7', '7', 'S'], false)).toBe(-1);
+});
+
+// compareJuego8Reyes
+
+test('', () => {
+    expect(compareJuego8Reyes(['K', '3', 'K', 'A'], ['S', 'S', 'S', '2'], true)).toBe(1);
+});
+
+test('', () => {
+    expect(compareJuego8Reyes(['K', '3', 'K', 'A'], ['S', 'S', 'S', '2'], false)).toBe(-1);
+});
+
+// thereIsPares8Reyes
+
+test('', () => {
+    expect(thereIsPares8Reyes(['K', '3', '5', 'A'])).toBeTruthy();
+});
+
+test('', () => {
+    expect(thereIsPares8Reyes(['K', '3', '2', 'A'])).toBeTruthy();
+});
+
+test('', () => {
+    expect(thereIsPares8Reyes(['K', 'S', '2', 'A'])).toBeTruthy();
+});
+
+test('', () => {
+    expect(thereIsPares8Reyes(['K', 'S', '6', 'A'])).toBeFalsy();
+});
+
+// thereIsJuego8Reyes
+
+test('', () => {
+    expect(thereIsJuego8Reyes(['K', 'S', '6', 'A'])).toBeFalsy();
+});
+
+test('', () => {
+    expect(thereIsJuego8Reyes(['K', '3', '3', 'A'])).toBeTruthy();
+});
+
+test('', () => {
+    expect(thereIsJuego8Reyes(['K', 'K', '5', '5'])).toBeFalsy();
 });
